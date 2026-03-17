@@ -81,6 +81,13 @@ class Bill(BaseModel):
             data = json.load(file)
         assert isinstance(data, list), "Expected a list of bills"
         return [Bill(**bill) for bill in data]
+    
+class ApartmentSettlement:
+    numer_mieszkania: str = '64'
+    miesiac: str = '2024-06'
+    suma_rachunkow: float = 674.0
+    suma_czynszu: float = 1.0
+    kwota_do_zaplaty: float = 2674.0
 
 class TenantSettlement:
     najemca: str = 'Kornel Nowacki'
