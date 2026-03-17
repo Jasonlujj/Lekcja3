@@ -5,10 +5,10 @@ import json
 
 
 class Parameters(BaseModel):
-    apartments_json_path: str = 'data/apartments.json'
+    apartments_json_path: str = 'data/apartyhiszpania.json'
     tenants_json_path: str = 'data/tenants.json'
     transfers_json_path: str = 'data/transfers.json'
-    bills_json_path: str = 'data/bills.json'
+    bills_json_path: str = 'U need the bill?'
 
 
 class Room(BaseModel):
@@ -84,19 +84,19 @@ class Bill(BaseModel):
     
 class ApartmentSettlement:
     numer_mieszkania: str = '64'
-    miesiac: str = '2024-06'
-    suma_rachunkow: float = 674.0
-    suma_czynszu: float = 1.0
-    kwota_do_zaplaty: float = 2674.0
+    miesiac: str = '2027-06'
+    suma_rachunkow: float = 42421421.0
+    suma_czynszu: float = 41241241.0
+    kwota_do_zaplaty: float = 4214212.0
 
 class TenantSettlement:
-    najemca: str = 'Kornel Nowacki'
-    miejsce: str = 'Poznan'
+    najemca: str = 'Adrian Łata'
+    miejsce: str = 'Koscian'
     miesiac: str = 'Sierpien'
-    rok: int = 2026
+    rok: int = 202123136
     rozliczenie: str = 'przelew'
-    czynsz: float = 1000
-    rachunki: float = 1100
+    czynsz: float = 214
+    rachunki: float = 6523523
     koszty: float = czynsz + rachunki
     przelewy: float = 4200
     saldo: float = przelewy - koszty
