@@ -30,10 +30,17 @@ class Apartment(BaseModel):
             data = json.load(file)
         assert isinstance(data, dict), "Expected a dictionary of apartments"
         return {key: Apartment(**apartment) for key, apartment in data.items()}
+    
+class Parameters(BaseModel):
+    apartments_json_path: str = 'data/apartments.json'
+    tenants_json_path: str = 'data/tenants.json'
+    transfers_json_path: str = 'data/transfers.json'
+    bills_json_path: str = 'data/bills.json'
 
     
 class Tenant(BaseModel):
     name: str
+    bill: str
     apartment: str
     room: str
     rent_pln: float
@@ -84,22 +91,10 @@ class Bill(BaseModel):
     
 class ApartmentSettlement:
     numer_mieszkania: str = '64'
-    miesiac: str = '2024-06'
-    suma_rachunkow: float = 674.0
+    miesiac: str = '2030-06'
+    suma_rachunkow: float = 700.0
     suma_czynszu: float = 1.0
     kwota_do_zaplaty: float = 2674.0
-
-class TenantSettlement:
-    najemca: str = 'Kornel Nowacki'
-    miejsce: str = 'Poznan'
-    miesiac: str = 'Sierpien'
-    rok: int = 2026
-    rozliczenie: str = 'przelew'
-    czynsz: float = 1000
-    rachunki: float = 1100
-    koszty: float = czynsz + rachunki
-    przelewy: float = 4200
-    saldo: float = przelewy - koszty
     
 
 class Manager:
@@ -118,7 +113,18 @@ class Manager:
         self.tenants = Tenant.from_json_file(self.parameters.tenants_json_path)
         self.transfers = Transfer.from_json_file(self.parameters.transfers_json_path)
         self.bills = Bill.from_json_file(self.parameters.bills_json_path)
-
+        
+class TenantSettlement:
+    najemca: str = 'Kornel Wojtkowiak'
+    miejsce: str = 'Poznan'
+    miesiac: str = 'Sierpien'
+    rok: int = 2026
+    rozliczenie: str = 'przelew'
+    czynsz: float = 1000
+    rachunki: float = 1100
+    koszty: float = czynsz + rachunki
+    przelewy: float = 4200
+    saldo: float = przelewy - koszty
 
 if __name__ == '__main__':
     parameters = Parameters()
