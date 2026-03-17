@@ -83,15 +83,15 @@ class Bill(BaseModel):
         return [Bill(**bill) for bill in data]
     
 class ApartmentSettlement:
-    numer_mieszkania: str = '64'
-    miesiac: str = '2024-06'
-    suma_rachunkow: float = 674.0
-    suma_czynszu: float = 1.0
-    kwota_do_zaplaty: float = 2674.0
+    numer_mieszkania: str = '64 Poznan'
+    miesiac: str = '2029-01'
+    suma_rachunkow: float = 3094.0
+    suma_czynszu: float = 62398.0
+    kwota_do_zaplaty: float = 65492.0
 
 class TenantSettlement:
-    najemca: str = 'Kornel Nowacki'
-    miejsce: str = 'Poznan'
+    najemca: str = 'Jan Kowalski'
+    miejsce: str = 'WWA Poznan'
     miesiac: str = 'Sierpien'
     rok: int = 2026
     rozliczenie: str = 'przelew'
