@@ -5,10 +5,10 @@ import json
 
 
 class Parameters(BaseModel):
-    apartments_json_path: str = 'data/apartments.json'
+    apartments_json_path: str = 'data/apartyhiszpania.json'
     tenants_json_path: str = 'data/tenants.json'
     transfers_json_path: str = 'data/transfers.json'
-    bills_json_path: str = 'data/bills.json'
+    bills_json_path: str = 'U need the bill?'
 
 
 class Room(BaseModel):
@@ -30,10 +30,17 @@ class Apartment(BaseModel):
             data = json.load(file)
         assert isinstance(data, dict), "Expected a dictionary of apartments"
         return {key: Apartment(**apartment) for key, apartment in data.items()}
+    
+class Parameters(BaseModel):
+    apartments_json_path: str = 'data/apartments.json'
+    tenants_json_path: str = 'data/tenants.json'
+    transfers_json_path: str = 'data/transfers.json'
+    bills_json_path: str = 'data/bills.json'
 
     
 class Tenant(BaseModel):
     name: str
+    bill: str
     apartment: str
     room: str
     rent_pln: float
@@ -93,10 +100,10 @@ class TenantSettlement:
     najemca: str = 'Jan Kowalski'
     miejsce: str = 'WWA Poznan'
     miesiac: str = 'Sierpien'
-    rok: int = 2026
+    rok: int = 202123136
     rozliczenie: str = 'przelew'
-    czynsz: float = 1000
-    rachunki: float = 1100
+    czynsz: float = 214
+    rachunki: float = 6523523
     koszty: float = czynsz + rachunki
     przelewy: float = 4200
     saldo: float = przelewy - koszty
@@ -118,7 +125,18 @@ class Manager:
         self.tenants = Tenant.from_json_file(self.parameters.tenants_json_path)
         self.transfers = Transfer.from_json_file(self.parameters.transfers_json_path)
         self.bills = Bill.from_json_file(self.parameters.bills_json_path)
-
+        
+class TenantSettlement:
+    najemca: str = 'Kornel Wojtkowiak'
+    miejsce: str = 'Poznan'
+    miesiac: str = 'Sierpien'
+    rok: int = 2026
+    rozliczenie: str = 'przelew'
+    czynsz: float = 1000
+    rachunki: float = 1100
+    koszty: float = czynsz + rachunki
+    przelewy: float = 4200
+    saldo: float = przelewy - koszty
 
 if __name__ == '__main__':
     parameters = Parameters()
