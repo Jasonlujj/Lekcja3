@@ -88,7 +88,7 @@ class TenantSettlement:
     miesiac: str = 'Sierpien'
     rok: int = 2026
     rozliczenie: str = 'przelew'
-    czynsz: float = 1800
+    czynsz: float = 1000
     rachunki: float = 1100
     koszty: float = czynsz + rachunki
     przelewy: float = 4200
